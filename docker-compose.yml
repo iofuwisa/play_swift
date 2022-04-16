@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  bash:
+    image: swift
+    volumes:
+      - .:/opt/play_swift
+    working_dir: /opt/play_swift
+    privileged: true
+    tty: true
+    stdin_open: true
+    command: /bin/bash
+
+  main:
+    image: swift
+    volumes:
+      - .:/opt/play_swift
+    working_dir: /opt/play_swift
+    privileged: true
+    command: swift Sources/main.swift
+
+  test:
+    image: swift
+    volumes:
+      - .:/opt/play_swift
+    working_dir: /opt/play_swift
+    privileged: true
+    command: swift test
